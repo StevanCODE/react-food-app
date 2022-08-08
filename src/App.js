@@ -1,20 +1,19 @@
-import React, { useContext } from "react";
-import Cart from "./components/Cart/Cart";
+import React from "react";
 import Header from "./components/Layout/Header";
-import Meals from "./components/Meals/Meals";
-import GlobalStore from "./store/global.store";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./components/Pages/Home";
+import AdminPage from "./components/Pages/AdminPage";
+
 
 function App() {
-  const store = useContext(GlobalStore)
-
   return (
-    <>
+    <Router>
       <Header/>
-      <main>
-        <Meals/>
-        { store.showModal && <Cart setShowModal={store.setShowModal} />}
-      </main>
-    </>
+      <Routes>
+        <Route exact path='' element={<Home/> } > </Route>
+        <Route exact path='/admin' element={<AdminPage/>}></Route>
+      </Routes>
+    </Router>
   );
 }
 

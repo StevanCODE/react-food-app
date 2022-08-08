@@ -1,41 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../UI/Card';
 import classes from "./AvailableMeals.module.css"
 import MealItem from './MealItem/MealItem';
-
-const DUMMY_MEALS = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-  },
-  {
-    id: 'm3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-  },
-  {
-    id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-  },
-];
+import { getMeals } from '../../services';
 
 const AvailableMeals = () => {
-  const meals = DUMMY_MEALS.map(meal => <MealItem key={meal.id} id={meal.id} name={meal.name} description={meal.description} price={meal.price}/>)
+  const [mealsList, setMealsList] = useState([])
+  const [errorMsg, setErrorMsg] = useState('')
+  useEffect(() => {
+    getMeals(setMealsList,setErrorMsg)
+  },[])
+
+  
+  const meals = mealsList.map(meal => <MealItem key={meal.id} id={meal.id} name={meal.name} description={meal.description} price={meal.price}/>)
+  console.log(mealsList)
+
   return <section className={classes.meals}>
     <Card>
       <ul>
-        {meals}
+        {meals.length > 0 ? meals : errorMsg !== '' ? <p>{errorMsg}</p>: <p> No meals loaded </p>}
       </ul>
     </Card>
   </section>

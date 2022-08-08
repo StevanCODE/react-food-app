@@ -16,3 +16,30 @@
   font: inherit;
   padding-left: 0.5rem;
 }
+
+.text-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.text-input label {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.text-input input {
+  width: 30%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font: inherit;
+  padding-left: 0.5rem;
+}
+
+.text-input--id input {
+  width:3rem;
+}
+
+.text-input--price input {
+  width:6rem;
+}

@@ -17,9 +17,15 @@ const MealItemForm = ({id,name,price,description}) => {
     }})
     setAmount(1)
   }
+
+  const handleChange = (e) => {
+    setAmount(e.target.value)
+  }
+  
+
   return (
     <form onSubmit={handleSubmit} className={classes.form}>
-      <Input label="Amount" setAmount={setAmount} input={{
+      <Input label="Amount" onChange={handleChange} input={{
         id:"amount_" + id,
         type:"number",
         min:'1',

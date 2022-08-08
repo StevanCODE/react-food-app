@@ -5,3 +5,7 @@
   border-radius: 14px;
   background-color: white;
 }
+
+.card--admin {
+  width: 40rem;
+}

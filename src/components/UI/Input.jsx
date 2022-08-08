@@ -3,10 +3,10 @@ import classes from "./Input.module.css"
 
 const Input = (props) => {
   return (
-    <div className={classes.input}>
+    <div className={props.classes ? props.classes : classes.input}>
       <label htmlFor={props.input.id}>{props.label}</label>
-      <input {...props.input} onChange={(e) => props.setAmount(e.target.value)}/>
-    </div>  
+      <input {...props.input} onChange={props.onChange}/>
+    </div>
   )
 }
 
